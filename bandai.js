@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
+// @namespace           https://github.com/liyuhaolol/BandaiJS
 // @version             1.0
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
