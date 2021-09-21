@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.1
+// @version             1.2
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -51,6 +51,7 @@
   var patt28 = /イベント開催記念物販/;
   var patt29 = /ストライクフリーダムガンダム/;
   var patt30 = /デスティニーガンダム/;
+  var patt31 = /発送予定/;
 
 
   traverseElement(document.body);//开始翻译网页
@@ -119,6 +120,8 @@
         el[k] = el[k].replace('発送商品', '发货产品')
       }else if (patt26.test(key)) {
         el[k] = el[k].replace('発送分', '发货')
+      }else if (patt31.test(key)) {
+        el[k] = el[k].replace('発送予定', '预定发货')
       }else if (patt1.test(key)) {
         el[k] = el[k].replace('発送', '发货')
       }
