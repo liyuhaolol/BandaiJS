@@ -52,6 +52,9 @@
   var patt29 = /ストライクフリーダムガンダム/;
   var patt30 = /デスティニーガンダム/;
   var patt31 = /発送予定/;
+  var patt32 = /締切/;
+  var patt33 = /ページ/;
+  var patt34 = /特別販売/;
 
 
   traverseElement(document.body);//开始翻译网页
@@ -115,7 +118,7 @@
     if (locales.dict[key]) {
       el[k] = el[k].replace(txtSrc, locales.dict[key])
     }else {
-      //
+      //主要用来翻译带有发货字样的文本
       if (patt2.test(key)) {
         el[k] = el[k].replace('発送商品', '发货产品')
       }else if (patt26.test(key)) {
@@ -125,7 +128,7 @@
       }else if (patt1.test(key)) {
         el[k] = el[k].replace('発送', '发货')
       }
-      //
+      //主要用来翻译一些杂项
       if (patt3.test(key)) {
         el[k] = el[k].replace('円（税込）', '日元（含税）')
         el[k] = el[k].replace('円 （税込）', '日元（含税）')
@@ -147,8 +150,12 @@
         el[k] = el[k].replace('円 (税込)', '日元(含税)')
       }else if (patt24.test(key)) {
         el[k] = el[k].replace('予約開始', '开始预订')
+      }else if (patt32.test(key)) {
+        el[k] = el[k].replace('締切', '截止')
+      }else if (patt33.test(key)) {
+        el[k] = el[k].replace('ページ', '页')
       }
-      //
+      //翻译一些作品名
       if (patt10.test(key)) {
         el[k] = el[k].replace('機動戦士ガンダム', '机动战士高达')
         if (patt11.test(key)) {
@@ -175,7 +182,7 @@
       }else if (patt23.test(key)) {
         el[k] = el[k].replace('エヴァンゲリオン', '新世纪福音战士')
       }
-      //
+      //翻译一些SEED名称
       if (patt20.test(key)) {
         el[k] = el[k].replace('ストライクガンダム', '强袭高达')
       }else if (patt21.test(key)) {
@@ -185,7 +192,7 @@
       }else if (patt29.test(key)) {
         el[k] = el[k].replace('デスティニーガンダム', '命运高达')
       }
-      //
+      //翻译销售类型
       if (patt25.test(key)) {
         el[k] = el[k].replace('抽選販売', '抽选销售')
       }
@@ -194,6 +201,9 @@
       }
       if (patt28.test(key)) {
         el[k] = el[k].replace('イベント開催記念物販', '活动纪念特卖品')
+      }
+      if (patt34.test(key)) {
+        el[k] = el[k].replace('特別販売', '特别销售')
       }
     }
   }
