@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.2
+// @version             1.3
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -189,7 +189,7 @@
         el[k] = el[k].replace('エールストライカー', '翔翼型强袭装备')
       }else if (patt29.test(key)) {
         el[k] = el[k].replace('ストライクフリーダムガンダム', '强袭自由高达')
-      }else if (patt29.test(key)) {
+      }else if (patt30.test(key)) {
         el[k] = el[k].replace('デスティニーガンダム', '命运高达')
       }
       //翻译销售类型
