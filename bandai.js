@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.4
+// @version             1.5
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -55,6 +55,7 @@
   var patt32 = /締切/;
   var patt33 = /ページ/;
   var patt34 = /特別販売/;
+  var patt35 = /ローエングリンランチャー/;
 
 
   traverseElement(document.body);//开始翻译网页
@@ -191,6 +192,8 @@
         el[k] = el[k].replace('ストライクフリーダムガンダム', '强袭自由高达')
       }else if (patt30.test(key)) {
         el[k] = el[k].replace('デスティニーガンダム', '命运高达')
+      }else if (patt35.test(key)) {
+        el[k] = el[k].replace('ローエングリンランチャー', '阳电子炮')
       }
       //翻译销售类型
       if (patt25.test(key)) {
