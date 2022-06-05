@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.5
+// @version             1.6
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -10,7 +10,7 @@
 // @match               *://search.p-bandai.jp/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://gitee.com/NewMoonStyle/BandaiTranslate/raw/master/bandai.json
+// @resource            zh-CN https://raw.githubusercontent.com/liyuhaolol/BandaiTranslate/main/bandai.json
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // ==/UserScript==
 
