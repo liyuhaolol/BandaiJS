@@ -12,6 +12,7 @@
 // @grant               GM_getResourceText
 // @resource            zh-CN https://raw.githubusercontent.com/liyuhaolol/BandaiTranslate/main/bandai.json
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
+// @license MIT
 // ==/UserScript==
 
 (function() {
