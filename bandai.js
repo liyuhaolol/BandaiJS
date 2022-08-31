@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.6
+// @version             1.7
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -10,7 +10,7 @@
 // @match               *://search.p-bandai.jp/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://raw.githubusercontent.com/liyuhaolol/BandaiTranslate/main/bandai.json
+// @resource            zh-CN https://www.githubs.cn/raw-githubusercontent/liyuhaolol/BandaiTranslate/main/bandai.json
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @license MIT
 // ==/UserScript==
@@ -57,6 +57,17 @@
   var patt33 = /ページ/;
   var patt34 = /特別販売/;
   var patt35 = /ローエングリンランチャー/;
+  var patt36 = /ストライクルージュ/;
+  var patt37 = /グランドスラム装備型/;
+  var patt38 = /オオトリ装備/;
+  var patt39 = /カレトヴルッフ/;
+  var patt40 = /オプションセット/;
+  var patt41 = /アストレイドライグヘッド/;
+  var patt42 = /フライトユニット/;
+  var patt43 = /オルタナティブストライクVer./;
+  var patt44 = /ガンダムアストレイ/;
+  var patt45 = /レッドドラゴニクス/;
+
 
 
   traverseElement(document.body);//开始翻译网页
@@ -184,7 +195,7 @@
       }else if (patt23.test(key)) {
         el[k] = el[k].replace('エヴァンゲリオン', '新世纪福音战士')
       }
-      //翻译一些SEED名称
+      //翻译一些SEED名称主词条
       if (patt20.test(key)) {
         el[k] = el[k].replace('ストライクガンダム', '强袭高达')
       }else if (patt21.test(key)) {
@@ -195,7 +206,31 @@
         el[k] = el[k].replace('デスティニーガンダム', '命运高达')
       }else if (patt35.test(key)) {
         el[k] = el[k].replace('ローエングリンランチャー', '阳电子炮')
+      }else if (patt36.test(key)) {
+        el[k] = el[k].replace('ストライクルージュ', '嫣红强袭高达')
+      }else if (patt39.test(key)) {
+        el[k] = el[k].replace('カレトヴルッフ', '王者之剑')
+      }else if (patt41.test(key)) {
+        el[k] = el[k].replace('アストレイドライグヘッド', '异端高达红色机红龙形态配件包')
+      }else if (patt42.test(key)) {
+        el[k] = el[k].replace('フライトユニット', '飞行背包')
+      }else if (patt44.test(key)) {
+        el[k] = el[k].replace('ガンダムアストレイ', '异端高达')
       }
+     //翻译一些SEED名称附词条
+     if (patt37.test(key)) {
+       el[k] = el[k].replace('グランドスラム装備型', '斩舰刀装备型')
+     }else if (patt38.test(key)) {
+       el[k] = el[k].replace('オオトリ装備', '凤装备型')
+     }else if (patt40.test(key)) {
+       el[k] = el[k].replace('オプションセット', 'OPTION套装')
+     }else if (patt45.test(key)) {
+       el[k] = el[k].replace('レッドドラゴニクス', '红龙改形态')
+     }
+     //翻译一些SEED名称三级词条
+     if (patt43.test(key)) {
+       el[k] = el[k].replace('オルタナティブストライクVer.', 'AS Ver.')
+     }
       //翻译销售类型
       if (patt25.test(key)) {
         el[k] = el[k].replace('抽選販売', '抽选销售')
