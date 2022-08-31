@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.7
+// @version             1.8
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -67,6 +67,8 @@
   var patt43 = /オルタナティブストライクVer./;
   var patt44 = /ガンダムアストレイ/;
   var patt45 = /レッドドラゴニクス/;
+  var patt46 = /スナイパーパック/;
+  var patt47 = /ブルーフレームセカンドリバイ/;
 
 
 
@@ -216,6 +218,8 @@
         el[k] = el[k].replace('フライトユニット', '飞行背包')
       }else if (patt44.test(key)) {
         el[k] = el[k].replace('ガンダムアストレイ', '异端高达')
+      }else if (patt46.test(key)) {
+        el[k] = el[k].replace('スナイパーパック', '狙击背包')
       }
      //翻译一些SEED名称附词条
      if (patt37.test(key)) {
@@ -226,6 +230,8 @@
        el[k] = el[k].replace('オプションセット', 'OPTION套装')
      }else if (patt45.test(key)) {
        el[k] = el[k].replace('レッドドラゴニクス', '红龙改形态')
+     }else if (patt47.test(key)) {
+       el[k] = el[k].replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
      }
      //翻译一些SEED名称三级词条
      if (patt43.test(key)) {
