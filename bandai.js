@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN         日魂汉化插件
-// @version             1.8
+// @version             1.9
 // @description         Translate Bandai.com
 // @description:zh     日魂汉化插件
 // @description:zh-CN   日魂汉化插件
@@ -69,6 +69,7 @@
   var patt45 = /レッドドラゴニクス/;
   var patt46 = /スナイパーパック/;
   var patt47 = /ブルーフレームセカンドリバイ/;
+  var patt48 = /インフィニットジャスティスガンダム/;
 
 
 
@@ -117,6 +118,8 @@
     if(el.tagName === "INPUT") {
       if (el.type === 'button' || el.type === 'submit') {
         k = 'value';
+      }else if(el.type === 'image'){
+        k = 'src'
       } else {
         k = 'placeholder';
       }
@@ -130,6 +133,7 @@
       .replace(/\s{2,}/g, ' ')
       .replace(/[\r\n]/g,'');
 
+    console.log(key);
     if (locales.dict[key]) {
       el[k] = el[k].replace(txtSrc, locales.dict[key])
     }else {
@@ -220,6 +224,8 @@
         el[k] = el[k].replace('ガンダムアストレイ', '异端高达')
       }else if (patt46.test(key)) {
         el[k] = el[k].replace('スナイパーパック', '狙击背包')
+      }else if (patt48.test(key)) {
+        el[k] = el[k].replace('インフィニットジャスティスガンダム', '无限正义高达')
       }
      //翻译一些SEED名称附词条
      if (patt37.test(key)) {
