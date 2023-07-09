@@ -76,6 +76,7 @@
   traverseElement(document.body);//开始翻译网页
   watchUpdate();//监控网页内容变化
 
+
   //读取本地翻译文件
   function getLocales(lang) {
     if(lang.startsWith("zh")) { // zh zh-TW --> zh-CN
@@ -133,10 +134,11 @@
       .replace(/\s{2,}/g, ' ')
       .replace(/[\r\n]/g,'');
 
-    console.log(key);
+    //console.log(key);
     if (locales.dict[key]) {
       el[k] = el[k].replace(txtSrc, locales.dict[key])
     }else {
+
       //主要用来翻译带有发货字样的文本
       if (patt2.test(key)) {
         el[k] = el[k].replace('発送商品', '发货产品')
@@ -174,6 +176,7 @@
       }else if (patt33.test(key)) {
         el[k] = el[k].replace('ページ', '页')
       }
+
       //翻译一些作品名
       if (patt10.test(key)) {
         el[k] = el[k].replace('機動戦士ガンダム', '机动战士高达')
@@ -276,4 +279,6 @@
       childList: true,
     });
   }
+
+  
 })();
