@@ -7,6 +7,7 @@
 // @description:zh-CN   日魂汉化插件
 // @author              菜狗子
 // @updateURL           https://fastly.jsdelivr.net/gh/liyuhaolol/BandaiJS/bandai.js
+// @downloadURL         https://fastly.jsdelivr.net/gh/liyuhaolol/BandaiJS/bandai.js
 // @match               *://p-bandai.jp/*
 // @match               *://search.p-bandai.jp/*
 // @grant               GM_xmlhttpRequest
