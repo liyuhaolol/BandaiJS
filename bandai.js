@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             1.9
+// @version             2.0
 // @description         Translate Bandai.com
 // @description:zh      日魂汉化插件
 // @description:zh-CN   日魂汉化插件
