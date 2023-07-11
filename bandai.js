@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.1
+// @version             2.2
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate Bandai.com
 // @description:zh      日魂汉化插件
@@ -15,6 +15,7 @@
 // @grant               GM_getResourceText
 // @resource            zh-CN https://www.githubs.cn/raw-githubusercontent/liyuhaolol/BandaiTranslate/main/bandai.json
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
+// @icon                https://p-bandai.jp/favicon.ico
 // @license MIT
 // ==/UserScript==
 
