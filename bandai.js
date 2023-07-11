@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.0
+// @version             2.1
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate Bandai.com
 // @description:zh      日魂汉化插件
@@ -20,6 +20,7 @@
 
 (function() {
   'use strict';
+
 
   const SUPPORT_LANG = ["zh-CN"];//设置语言为简体中文
   const lang = (navigator.language || navigator.userLanguage);
@@ -73,9 +74,25 @@
   var patt46 = /スナイパーパック/;
   var patt47 = /ブルーフレームセカンドリバイ/;
   var patt48 = /インフィニットジャスティスガンダム/;
+  var patt49 = /魂ウェブ商店/;
+  var patt50 = /プレミアムバンダイ/;
+  var patt51 = /バンダイナムコグループ公式通販サイト/;
+  var patt52 = /フィギュア/;
+  var patt53 = /プラモデル/;
+  var patt54 = /プラキット/;
+  var patt55 = /シリーズ/;
+  var patt56 = /その他/;
+  var patt57 = /ガンダムシリーズ/;//需特殊优先处理
+  var patt58 = /水星の魔女/;
+  var patt59 = /発送月から探す/;
+  var patt60 = /ドラゴンボール/;
+  var patt61= /ブランドから探す/;
+  var patt62= /キャラクターから探す/;
+  var patt63= /締切間近/;
+  
 
 
-
+  translateTitle();//开始翻译标题
   traverseElement(document.body);//开始翻译网页
   watchUpdate();//监控网页内容变化
 
@@ -114,6 +131,12 @@
     }
   }
 
+  //进行页面标题翻译
+  function translateTitle(){
+    var pageTitle = document.title;
+    document.title = beginTranslate(pageTitle);
+  }
+
   //翻译元素内容
   function translateElement(el) {
     // Get the text field name
@@ -134,129 +157,173 @@
       .replace(/\s{2,}/g, ' ')
       .replace(/[\r\n]/g,'');
 
+    var value = beginTranslate(key);
+    el[k] = el[k].replace(txtSrc, value)
+  }
+
+  function beginTranslate(key){
+    var value = key;
     if (locales.dict[key]) {
-      el[k] = el[k].replace(txtSrc, locales.dict[key])
+      value =  locales.dict[key];
     }else {
       //主要用来翻译带有发货字样的文本
-      if (patt2.test(key)) {
-        el[k] = el[k].replace('発送商品', '发货产品')
+      if (patt59.test(key)) {
+        value = value.replace('発送月から探す', '按发货月份搜索')
+      }else if (patt2.test(key)) {
+        value = value.replace('発送商品', '发货产品');
       }else if (patt26.test(key)) {
-        el[k] = el[k].replace('発送分', '发货')
+        value = value.replace('発送分', '发货')
       }else if (patt31.test(key)) {
-        el[k] = el[k].replace('発送予定', '预定发货')
+        value = value.replace('発送予定', '预定发货')
       }else if (patt1.test(key)) {
-        el[k] = el[k].replace('発送', '发货')
+        value = value.replace('発送', '发货')
       }
       //主要用来翻译一些杂项
-      if (patt3.test(key)) {
-        el[k] = el[k].replace('円（税込）', '日元（含税）')
-        el[k] = el[k].replace('円 （税込）', '日元（含税）')
+      if (patt57.test(key)) {
+        value = value.replace('ガンダムシリーズ', '高达系列')
+      }else if (patt3.test(key)) {
+        value = value.replace('円（税込）', '日元（含税）')
+        value = value.replace('円 （税込）', '日元（含税）')
       }else if (patt4.test(key)) {
-        el[k] = el[k].replace('歳～', '岁以上')
+        value = value.replace('歳～', '岁以上')
       }else if (patt5.test(key)) {
-        el[k] = el[k].replace('お一人様', '每人最多购买')
-        el[k] = el[k].replace('個まで', '个')
+        value = value.replace('お一人様', '每人最多购买')
+        value = value.replace('個まで', '个')
       }else if (patt6.test(key)) {
-        el[k] = el[k].replace('注文につき', '单最多购买')
-        el[k] = el[k].replace('個まで', '个')
+        value = value.replace('注文につき', '单最多购买')
+        value = value.replace('個まで', '个')
       }else if (patt7.test(key)) {
-        el[k] = el[k].replace('円', '日元')
+        value = value.replace('円', '日元')
       }else if (patt8.test(key)) {
-        el[k] = el[k].replace('同時購入数は', '最多可同时购买')
-        el[k] = el[k].replace('個までとなっております。', '件物品。')
+        value = value.replace('同時購入数は', '最多可同时购买')
+        value = value.replace('個までとなっております。', '件物品。')
       }else if (patt9.test(key)) {
-        el[k] = el[k].replace('円(税込)', '日元(含税)')
-        el[k] = el[k].replace('円 (税込)', '日元(含税)')
+        value = value.replace('円(税込)', '日元(含税)')
+        value = value.replace('円 (税込)', '日元(含税)')
       }else if (patt24.test(key)) {
-        el[k] = el[k].replace('予約開始', '开始预订')
-      }else if (patt32.test(key)) {
-        el[k] = el[k].replace('締切', '截止')
+        value = value.replace('予約開始', '开始预订')
       }else if (patt33.test(key)) {
-        el[k] = el[k].replace('ページ', '页')
+        value = value.replace('ページ', '页')
+      }else if (patt55.test(key)) {
+        value = value.replace('シリーズ', '系列')
+      }else if (patt56.test(key)) {
+        value = value.replace('その他', '其他')
+      }else if (patt61.test(key)) {
+        value = value.replace('ブランドから探す', '按品牌搜索')
+      }else if (patt62.test(key)) {
+        value = value.replace('キャラクターから探す', '按关键字搜索')
+      }else if (patt63.test(key)) {
+        value = value.replace('締切間近', '近期截止')
+      }else if (patt32.test(key)) {
+        value = value.replace('締切', '截止')
+      }
+      //翻译一些标题内容
+      if (patt49.test(key)) {
+        value = value.replace('魂ウェブ商店', '魂商店')
+      }
+      if (patt50.test(key)) {
+        value = value.replace('プレミアムバンダイ', 'Premium Bandai')
+      }
+      if (patt51.test(key)) {
+        value = value.replace('バンダイナムコグループ公式通販サイト', '万代南梦宫集团官方线上销售网站')
+      }
+      if (patt52.test(key)) {
+        value = value.replace('フィギュア', '手办')
+      }
+      if (patt53.test(key)) {
+        value = value.replace('プラモデル', '塑料模型')
+      }
+      if (patt54.test(key)) {
+        value = value.replace('プラキット', '塑料配件')
       }
       //翻译一些作品名
       if (patt10.test(key)) {
-        el[k] = el[k].replace('機動戦士ガンダム', '机动战士高达')
+          value = value.replace('機動戦士ガンダム', '机动战士高达')
         if (patt11.test(key)) {
-          el[k] = el[k].replace('逆襲のシャア', '逆袭的夏亚')
+          value = value.replace('逆襲のシャア', '逆袭的夏亚')
         }else if (patt12.test(key)) {
-          el[k] = el[k].replace('サンダーボルト', '雷霆宙域')
+          value = value.replace('サンダーボルト', '雷霆宙域')
         }else if (patt13.test(key)) {
-          el[k] = el[k].replace('閃光のハサウェイ', '闪光的哈萨维')
+          value = value.replace('閃光のハサウェイ', '闪光的哈萨维')
         }else if (patt14.test(key)) {
-          el[k] = el[k].replace('第０８ＭＳ小隊', '第08MS小队')
+          value = value.replace('第０８ＭＳ小隊', '第08MS小队')
         }else if (patt15.test(key)) {
-          el[k] = el[k].replace('ポケットの中の戦争', '口袋里的战争')
+          value = value.replace('ポケットの中の戦争', '口袋里的战争')
         }else if (patt16.test(key)) {
-          el[k] = el[k].replace('鉄血のオルフェンズ', '铁血的奥尔芬斯')
+          value = value.replace('鉄血のオルフェンズ', '铁血的奥尔芬斯')
         }else if (patt17.test(key)) {
-          el[k] = el[k].replace('ユニコーン', '独角兽')
+          value = value.replace('ユニコーン', '独角兽')
+        }else if (patt58.test(key)) {
+          value = value.replace('水星の魔女', '水星的魔女')
         }
       }else if (patt18.test(key)) {
-        el[k] = el[k].replace('仮面ライダー', '假面骑士')
+        value = value.replace('仮面ライダー', '假面骑士')
       }else if (patt19.test(key)) {
-        el[k] = el[k].replace('鬼滅の刃', '鬼灭之刃')
+        value = value.replace('鬼滅の刃', '鬼灭之刃')
       }else if (patt22.test(key)) {
-        el[k] = el[k].replace('聖闘士聖衣神話', '圣斗士圣衣神话')
+        value = value.replace('聖闘士聖衣神話', '圣斗士圣衣神话')
       }else if (patt23.test(key)) {
-        el[k] = el[k].replace('エヴァンゲリオン', '新世纪福音战士')
+        value = value.replace('エヴァンゲリオン', '新世纪福音战士')
+      }else if (patt60.test(key)) {
+        value = value.replace('ドラゴンボール', '龙珠')
       }
       //翻译一些SEED名称主词条
       if (patt20.test(key)) {
-        el[k] = el[k].replace('ストライクガンダム', '强袭高达')
+        value = value.replace('ストライクガンダム', '强袭高达')
       }else if (patt21.test(key)) {
-        el[k] = el[k].replace('エールストライカー', '翔翼型强袭装备')
+        value = value.replace('エールストライカー', '翔翼型强袭装备')
       }else if (patt29.test(key)) {
-        el[k] = el[k].replace('ストライクフリーダムガンダム', '强袭自由高达')
+        value = value.replace('ストライクフリーダムガンダム', '强袭自由高达')
       }else if (patt30.test(key)) {
-        el[k] = el[k].replace('デスティニーガンダム', '命运高达')
+        value = value.replace('デスティニーガンダム', '命运高达')
       }else if (patt35.test(key)) {
-        el[k] = el[k].replace('ローエングリンランチャー', '阳电子炮')
+        value = value.replace('ローエングリンランチャー', '阳电子炮')
       }else if (patt36.test(key)) {
-        el[k] = el[k].replace('ストライクルージュ', '嫣红强袭高达')
+        value = value.replace('ストライクルージュ', '嫣红强袭高达')
       }else if (patt39.test(key)) {
-        el[k] = el[k].replace('カレトヴルッフ', '王者之剑')
+        value = value.replace('カレトヴルッフ', '王者之剑')
       }else if (patt41.test(key)) {
-        el[k] = el[k].replace('アストレイドライグヘッド', '异端高达红色机红龙形态配件包')
+        value = value.replace('アストレイドライグヘッド', '异端高达红色机红龙形态配件包')
       }else if (patt42.test(key)) {
-        el[k] = el[k].replace('フライトユニット', '飞行背包')
+        value = value.replace('フライトユニット', '飞行背包')
       }else if (patt44.test(key)) {
-        el[k] = el[k].replace('ガンダムアストレイ', '异端高达')
+        value = value.replace('ガンダムアストレイ', '异端高达')
       }else if (patt46.test(key)) {
-        el[k] = el[k].replace('スナイパーパック', '狙击背包')
+        value = value.replace('スナイパーパック', '狙击背包')
       }else if (patt48.test(key)) {
-        el[k] = el[k].replace('インフィニットジャスティスガンダム', '无限正义高达')
+        value = value.replace('インフィニットジャスティスガンダム', '无限正义高达')
       }
      //翻译一些SEED名称附词条
      if (patt37.test(key)) {
-       el[k] = el[k].replace('グランドスラム装備型', '斩舰刀装备型')
+       value = value.replace('グランドスラム装備型', '斩舰刀装备型')
      }else if (patt38.test(key)) {
-       el[k] = el[k].replace('オオトリ装備', '凤装备型')
+       value = value.replace('オオトリ装備', '凤装备型')
      }else if (patt40.test(key)) {
-       el[k] = el[k].replace('オプションセット', 'OPTION套装')
+       value = value.replace('オプションセット', 'OPTION套装')
      }else if (patt45.test(key)) {
-       el[k] = el[k].replace('レッドドラゴニクス', '红龙改形态')
+       value = value.replace('レッドドラゴニクス', '红龙改形态')
      }else if (patt47.test(key)) {
-       el[k] = el[k].replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
+       value = value.replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
      }
      //翻译一些SEED名称三级词条
      if (patt43.test(key)) {
-       el[k] = el[k].replace('オルタナティブストライクVer.', 'AS Ver.')
+       value = value.replace('オルタナティブストライクVer.', 'AS Ver.')
      }
       //翻译销售类型
       if (patt25.test(key)) {
-        el[k] = el[k].replace('抽選販売', '抽选销售')
+        value = value.replace('抽選販売', '抽选销售')
       }
       if (patt27.test(key)) {
-        el[k] = el[k].replace('開催記念商品', '纪念产品')
+        value = value.replace('開催記念商品', '纪念产品')
       }
       if (patt28.test(key)) {
-        el[k] = el[k].replace('イベント開催記念物販', '活动纪念特卖品')
+        value = value.replace('イベント開催記念物販', '活动纪念特卖品')
       }
       if (patt34.test(key)) {
-        el[k] = el[k].replace('特別販売', '特别销售')
+        value = value.replace('特別販売', '特别销售')
       }
     }
+    return value;
   }
 
   //监控网页的内容变化
