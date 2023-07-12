@@ -3,7 +3,7 @@
 // @name:zh-CN          日魂汉化插件
 // @version             2.2
 // @namespace           https://github.com/liyuhaolol/BandaiJS
-// @description         Translate Bandai.com
+// @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
 // @description:zh-CN   日魂汉化插件
 // @author              菜狗子
