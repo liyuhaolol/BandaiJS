@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.2
+// @version             2.3
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -13,7 +13,7 @@
 // @match               *://search.p-bandai.jp/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://www.githubs.cn/raw-githubusercontent/liyuhaolol/BandaiTranslate/main/bandai.json
+// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @icon                https://p-bandai.jp/favicon.ico
 // @license MIT
@@ -90,6 +90,9 @@
   var patt61= /ブランドから探す/;
   var patt62= /キャラクターから探す/;
   var patt63= /締切間近/;
+  var patt64= /プロヴィデンスガンダム/;
+  var patt65= /プロヴィデンスガンダム/;
+  var patt66= /時/;
   
 
 
@@ -218,6 +221,10 @@
       }else if (patt32.test(key)) {
         value = value.replace('締切', '截止')
       }
+      //主要用来翻译一些杂项2
+      if (patt57.test(key)) {
+        value = value.replace('ガンダムシリーズ', '高达系列')
+      }
       //翻译一些标题内容
       if (patt49.test(key)) {
         value = value.replace('魂ウェブ商店', '魂商店')
@@ -234,8 +241,8 @@
       if (patt53.test(key)) {
         value = value.replace('プラモデル', '塑料模型')
       }
-      if (patt54.test(key)) {
-        value = value.replace('プラキット', '塑料配件')
+      if (patt66.test(key)) {
+        value = value.replace('時', '时')
       }
       //翻译一些作品名
       if (patt10.test(key)) {
@@ -293,6 +300,8 @@
         value = value.replace('スナイパーパック', '狙击背包')
       }else if (patt48.test(key)) {
         value = value.replace('インフィニットジャスティスガンダム', '无限正义高达')
+      }else if (patt64.test(key)) {
+        value = value.replace('プロヴィデンスガンダム', '神意高达')
       }
      //翻译一些SEED名称附词条
      if (patt37.test(key)) {
