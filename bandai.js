@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.3
+// @version             2.4
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -93,6 +93,11 @@
   var patt64= /プロヴィデンスガンダム/;
   var patt65= /プロヴィデンスガンダム/;
   var patt66= /時/;
+  var patt67 = /オルタナティブストライク Ver./;
+  var patt68 = /ゴールドフレーム/;
+  var patt69 = /ディバインストライカー/;
+  var patt70 = /CTM抽選/;
+  var patt71 = /フリーダムガンダム/;
   
 
 
@@ -302,6 +307,10 @@
         value = value.replace('インフィニットジャスティスガンダム', '无限正义高达')
       }else if (patt64.test(key)) {
         value = value.replace('プロヴィデンスガンダム', '神意高达')
+      }else if (patt69.test(key)) {
+        value = value.replace('ディバインストライカー', '神兵型强袭装备')
+      }else if (patt71.test(key)) {
+        value = value.replace('フリーダムガンダム', '自由高达')
       }
      //翻译一些SEED名称附词条
      if (patt37.test(key)) {
@@ -314,11 +323,15 @@
        value = value.replace('レッドドラゴニクス', '红龙改形态')
      }else if (patt47.test(key)) {
        value = value.replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
-     }
+     }else if (patt68.test(key)) {
+      value = value.replace('ゴールドフレーム', '金色机')
+    }
      //翻译一些SEED名称三级词条
      if (patt43.test(key)) {
        value = value.replace('オルタナティブストライクVer.', 'AS Ver.')
-     }
+     }else if (patt67.test(key)) {
+      value = value.replace('オルタナティブストライク Ver.', 'AS Ver.')
+    }
       //翻译销售类型
       if (patt25.test(key)) {
         value = value.replace('抽選販売', '抽选销售')
@@ -331,6 +344,9 @@
       }
       if (patt34.test(key)) {
         value = value.replace('特別販売', '特别销售')
+      }
+      if (patt70.test(key)) {
+        value = value.replace('CTM抽選', 'CTM抽选')
       }
     }
     return value;
