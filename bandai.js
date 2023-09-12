@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.4
+// @version             2.5
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -11,6 +11,7 @@
 // @downloadURL         https://fastly.jsdelivr.net/gh/liyuhaolol/BandaiJS/bandai.js
 // @match               *://p-bandai.jp/*
 // @match               *://search.p-bandai.jp/*
+// @match               *://tamashiiweb.com/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
 // @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json
@@ -98,6 +99,36 @@
   var patt69 = /ディバインストライカー/;
   var patt70 = /CTM抽選/;
   var patt71 = /フリーダムガンダム/;
+  var patt72 = /ライトニングストライカー/;
+  var patt73 = /ストライクノワールガンダム/;
+  var patt74 = /事後販売/;
+  var patt75 = /ランチャーストライカー/;
+  var patt76 = /ソードストライカー/;
+  var patt77 = /ヘリオポリス ロールアウト/;
+  var patt78 = /ジャスティスガンダム/;
+  var patt79 = /天ミナ/;
+  var patt80 = /天空の皇女/;
+  var patt81 = /光の翼/;
+  var patt82 = /事前販売/;
+  var patt83 = /天ハナ/;
+  var patt84 = /バージョン華/;
+  var patt85 = /レッドフレーム/;
+  var patt86 = /オルタナティブストライク/;
+  var patt87 = /受注販売/;
+  var patt88 = /ガンバレルストライカー/;
+  var patt89 = /エールストライクガンダム/;
+  var patt90 = /パワードレッド/;
+  var patt91 = /ガーベラ・ストレート/;
+  var patt92 = /パワー/;
+  var patt93 = /タクティカルアームズ/;
+  var patt94 = /タイガーピアス/;
+  var patt95 = /ブルーフレーム/;
+  var patt96 = /フル・ウェポン装備/;
+  var patt97 = /フルパッケージ/;
+  var patt98 = /ハイネ機/;
+  var patt99 = /天空の宣言/;
+  var patt100 = /フライト・ユニット/;
+  var patt101 = /プリズムコート/;
   
 
 
@@ -179,7 +210,7 @@
       if (patt59.test(key)) {
         value = value.replace('発送月から探す', '按发货月份搜索')
       }else if (patt2.test(key)) {
-        value = value.replace('発送商品', '发货产品');
+        value = value.replace('発送商品', '发货商品');
       }else if (patt26.test(key)) {
         value = value.replace('発送分', '发货')
       }else if (patt31.test(key)) {
@@ -281,7 +312,9 @@
         value = value.replace('ドラゴンボール', '龙珠')
       }
       //翻译一些SEED名称主词条
-      if (patt20.test(key)) {
+      if (patt89.test(key)) {
+        value = value.replace('エールストライクガンダム', '翔翼型强袭高达')
+      }else if (patt20.test(key)) {
         value = value.replace('ストライクガンダム', '强袭高达')
       }else if (patt21.test(key)) {
         value = value.replace('エールストライカー', '翔翼型强袭装备')
@@ -299,6 +332,8 @@
         value = value.replace('アストレイドライグヘッド', '异端高达红色机红龙形态配件包')
       }else if (patt42.test(key)) {
         value = value.replace('フライトユニット', '飞行背包')
+      }else if (patt100.test(key)) {
+        value = value.replace('フライト・ユニット', '飞行背包')
       }else if (patt44.test(key)) {
         value = value.replace('ガンダムアストレイ', '异端高达')
       }else if (patt46.test(key)) {
@@ -311,33 +346,85 @@
         value = value.replace('ディバインストライカー', '神兵型强袭装备')
       }else if (patt71.test(key)) {
         value = value.replace('フリーダムガンダム', '自由高达')
+      }else if (patt72.test(key)) {
+        value = value.replace('ライトニングストライカー', '闪电强袭装备')
+      }else if (patt73.test(key)) {
+        value = value.replace('ストライクノワールガンダム', '漆黑强袭高达')
+      }else if (patt75.test(key)) {
+        value = value.replace('ランチャーストライカー', '重炮型强袭装备')
+      }else if (patt76.test(key)) {
+        value = value.replace('ソードストライカー', '重剑型强袭装备')
+      }else if (patt78.test(key)) {
+        value = value.replace('ジャスティスガンダム', '正义高达')
+      }else if (patt88.test(key)) {
+        value = value.replace('ガンバレルストライカー', '有线诱导型强袭装备')
+      }else if (patt90.test(key)) {
+        value = value.replace('パワードレッド', '强力型')
+      }else if (patt93.test(key)) {
+        value = value.replace('タクティカルアームズ', '战术复合兵装')
       }
      //翻译一些SEED名称附词条
-     if (patt37.test(key)) {
-       value = value.replace('グランドスラム装備型', '斩舰刀装备型')
-     }else if (patt38.test(key)) {
-       value = value.replace('オオトリ装備', '凤装备型')
-     }else if (patt40.test(key)) {
-       value = value.replace('オプションセット', 'OPTION套装')
-     }else if (patt45.test(key)) {
-       value = value.replace('レッドドラゴニクス', '红龙改形态')
-     }else if (patt47.test(key)) {
-       value = value.replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
-     }else if (patt68.test(key)) {
-      value = value.replace('ゴールドフレーム', '金色机')
-    }
+      if (patt37.test(key)) {
+        value = value.replace('グランドスラム装備型', '斩舰刀装备型')
+      }else if (patt38.test(key)) {
+        value = value.replace('オオトリ装備', '凤装备型')
+      }else if (patt40.test(key)) {
+        value = value.replace('オプションセット', 'OPTION套装')
+      }else if (patt45.test(key)) {
+        value = value.replace('レッドドラゴニクス', '红龙改形态')
+      }else if (patt47.test(key)) {
+        value = value.replace('ブルーフレームセカンドリバイ', '蓝色机二型改')
+      }else if (patt68.test(key)) {
+        value = value.replace('ゴールドフレーム', '金色机')
+      }else if (patt77.test(key)) {
+        value = value.replace('ヘリオポリス ロールアウト', '离开希奈波利斯')
+      }else if (patt85.test(key)) {
+        value = value.replace('レッドフレーム', '红色机')
+      }else if (patt95.test(key)) {
+        value = value.replace('ブルーフレーム', '蓝色机')
+      }else if (patt97.test(key)) {
+        value = value.replace('フルパッケージ', '套装')
+      }else if (patt98.test(key)) {
+        value = value.replace('ハイネ機', '海涅机型')
+      }else if (patt101.test(key)) {
+        value = value.replace('プリズムコート', '棱镜涂层')
+      }
      //翻译一些SEED名称三级词条
-     if (patt43.test(key)) {
+      if (patt43.test(key)) {
        value = value.replace('オルタナティブストライクVer.', 'AS Ver.')
-     }else if (patt67.test(key)) {
-      value = value.replace('オルタナティブストライク Ver.', 'AS Ver.')
-    }
+      }else if (patt67.test(key)) {
+        value = value.replace('オルタナティブストライク Ver.', 'AS Ver.')
+      }else if (patt79.test(key)) {
+        value = value.replace('天ミナ', '天蜜娜')
+      }else if (patt83.test(key)) {
+        value = value.replace('天ハナ', '天哈娜')
+      }else if (patt86.test(key)) {
+        value = value.replace('オルタナティブストライク', 'Alternative Strike')
+      }else if (patt91.test(key)) {
+        value = value.replace('ガーベラ・ストレート', '菊一文字')
+      }else if (patt94.test(key)) {
+        value = value.replace('タイガーピアス', '虎彻')
+      }else if (patt96.test(key)) {
+        value = value.replace('フル・ウェポン装備', '全装备版')
+      }else if (patt81.test(key)) {
+        value = value.replace('光の翼', '光之翼')
+      }
+     //翻译一些SEED名称四级词条
+      if (patt80.test(key)) {
+        value = value.replace('天空の皇女', '天空的皇女')
+      }else if (patt84.test(key)) {
+        value = value.replace('バージョン華', 'Ver.华')
+      }else if (patt92.test(key)) {
+        value = value.replace('パワー', 'POWER')
+      }else if (patt99.test(key)) {
+        value = value.replace('天空の宣言', '天空的宣言')
+      }
       //翻译销售类型
       if (patt25.test(key)) {
         value = value.replace('抽選販売', '抽选销售')
       }
       if (patt27.test(key)) {
-        value = value.replace('開催記念商品', '纪念产品')
+        value = value.replace('開催記念商品', '纪念商品')
       }
       if (patt28.test(key)) {
         value = value.replace('イベント開催記念物販', '活动纪念特卖品')
@@ -347,6 +434,15 @@
       }
       if (patt70.test(key)) {
         value = value.replace('CTM抽選', 'CTM抽选')
+      }
+      if (patt74.test(key)) {
+        value = value.replace('事後販売', '事后销售')
+      }
+      if (patt82.test(key)) {
+        value = value.replace('事前販売', '事前销售')
+      }
+      if (patt87.test(key)) {
+        value = value.replace('受注販売', '预订销售')
       }
     }
     return value;
