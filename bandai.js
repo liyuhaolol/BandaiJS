@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.8
+// @version             2.9
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -275,6 +275,10 @@
         value = value.replace('税抜', '不含税')
       }
       //主要用来翻译一些杂项3
+      if (patt106.test(key)) {
+        value = value.replace('円', '日元')
+      }
+      //主要用来翻译一些杂项4
       if (patt106.test(key)) {
         value = value.replace('円', '日元')
       }
