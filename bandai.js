@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.7
+// @version             2.8
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -130,9 +130,10 @@
   var patt100 = /フライト・ユニット/;
   var patt101 = /プリズムコート/;
   var patt102 = /発売/;
-  var patt103 = /円(税10%込)/;
-  var patt104 = /円(税抜)/;
+  var patt103 = /税10%込/;
+  var patt104 = /税抜/;
   var patt105 = /才以上/;
+  var patt106 = /円/;
   
 
 
@@ -263,7 +264,7 @@
       }else if (patt32.test(key)) {
         value = value.replace('締切', '截止')
       }else if (patt103.test(key)) {
-        value = value.replace('円(税10%込)', '日元(含10%税)')
+        value = value.replace('税10%込', '含10%税')
       }else if (patt105.test(key)) {
         value = value.replace('才以上', '岁以上')
       }
@@ -271,7 +272,11 @@
       if (patt57.test(key)) {
         value = value.replace('ガンダムシリーズ', '高达系列')
       }else if (patt104.test(key)) {
-        value = value.replace('円(税抜)', '日元(不含税)')
+        value = value.replace('税抜', '不含税')
+      }
+      //主要用来翻译一些杂项3
+      if (patt106.test(key)) {
+        value = value.replace('円', '日元')
       }
       //翻译一些标题内容
       if (patt49.test(key)) {
