@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             2.9
+// @version             3.0
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -134,6 +134,7 @@
   var patt104 = /税抜/;
   var patt105 = /才以上/;
   var patt106 = /円/;
+  var patt107 = /再販/;
   
 
 
@@ -267,6 +268,8 @@
         value = value.replace('税10%込', '含10%税')
       }else if (patt105.test(key)) {
         value = value.replace('才以上', '岁以上')
+      }else if (patt107.test(key)) {
+        value = value.replace('再販', '再贩')
       }
       //主要用来翻译一些杂项2
       if (patt57.test(key)) {
