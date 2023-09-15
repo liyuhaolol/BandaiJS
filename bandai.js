@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.0
+// @version             3.1
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -14,7 +14,7 @@
 // @match               *://tamashiiweb.com/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json
+// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20230915
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @icon                https://p-bandai.jp/favicon.ico
 // @license MIT
@@ -135,6 +135,25 @@
   var patt105 = /才以上/;
   var patt106 = /円/;
   var patt107 = /再販/;
+  var patt108 = /発売予定/;
+  var patt109 = /キーワード/;
+  var patt110 = /での検索結果/;
+  var patt111 = /前へ/;
+  var patt112 = /次へ/;
+  var patt113 = /表示順/;
+  var patt114 = /絞り込み/;
+  var patt115 = /なし/;
+  var patt116 = /リリース順/;
+  var patt117 = /発売日の新しい順/;
+  var patt118 = /発売日の古い順/;
+  var patt119 = /価格の安い順/;
+  var patt120 = /価格の高い順/;
+  var patt121 = /一般店頭商品/;
+  var patt122 = /魂ウェブ商店商品/;
+  var patt123 = /その他限定商品/;
+  var patt124 = /魂ストア限定商品/;
+  var patt125 = /魂ストアイベント商品/;
+  var patt126 = /シリーズの/;
   
 
 
@@ -159,21 +178,26 @@
 
   //进行网页翻译
   function traverseElement(el) {
-    for (const child of el.childNodes) {
-      if (child.nodeType === Node.TEXT_NODE) {
-        //如果是文字节点，继续翻译
-        translateElement(child);
-      }
-      else if(child.nodeType === Node.ELEMENT_NODE) {
-        //如果是元素节点
-        if (child.tagName === "INPUT") {
-          translateElement(child);//是个input进行元素翻译
-        } else {
-          traverseElement(child);
-        }
-      } else {
-        // pass
-      }
+    if(el.nodeType === Node.TEXT_NODE){
+        //如果是文字节点，直接翻译
+        translateElement(el);
+    }else{
+        for (const child of el.childNodes) {
+            if (child.nodeType === Node.TEXT_NODE) {
+              //如果是文字节点，继续翻译
+              translateElement(child);
+            }
+            else if(child.nodeType === Node.ELEMENT_NODE) {
+              //如果是元素节点
+              if (child.tagName === "INPUT") {
+                translateElement(child);//是个input进行元素翻译
+              } else {
+                traverseElement(child);
+              }
+            } else {
+              // pass
+            }
+          }
     }
   }
 
@@ -221,6 +245,8 @@
         value = value.replace('発送分', '发货')
       }else if (patt31.test(key)) {
         value = value.replace('発送予定', '预定发货')
+      }else if (patt108.test(key)) {
+        value = value.replace('発売予定', '预定发布')
       }else if (patt1.test(key)) {
         value = value.replace('発送', '发货')
       }else if (patt102.test(key)) {
@@ -270,16 +296,32 @@
         value = value.replace('才以上', '岁以上')
       }else if (patt107.test(key)) {
         value = value.replace('再販', '再贩')
+      }else if (patt109.test(key)) {
+        value = value.replace('キーワード', '关键字')
+      }else if (patt111.test(key)) {
+        value = value.replace('前へ', '上一页')
+      }else if (patt112.test(key)) {
+        value = value.replace('次へ', '下一页')
+      }else if (patt113.test(key)) {
+        value = value.replace('表示順', '显示顺序')
+      }else if (patt126.test(key)) {
+        value = value.replace('シリーズの', '的')
       }
       //主要用来翻译一些杂项2
       if (patt57.test(key)) {
         value = value.replace('ガンダムシリーズ', '高达系列')
       }else if (patt104.test(key)) {
         value = value.replace('税抜', '不含税')
+      }else if (patt110.test(key)) {
+        value = value.replace('での検索結果', '的搜索结果')
+      }else if (patt114.test(key)) {
+        value = value.replace('絞り込み', '过滤器')
       }
       //主要用来翻译一些杂项3
       if (patt106.test(key)) {
         value = value.replace('円', '日元')
+      }else if(patt115.test(key)) {
+        value = value.replace('なし', '无')
       }
       //主要用来翻译一些杂项4
       if (patt106.test(key)) {
@@ -287,7 +329,7 @@
       }
       //翻译一些标题内容
       if (patt49.test(key)) {
-        value = value.replace('魂ウェブ商店', '魂商店')
+        value = value.replace('魂ウェブ商店', '魂网商店')//忘了为什么会有这个选项，翻译文本已有此文本
       }
       if (patt50.test(key)) {
         value = value.replace('プレミアムバンダイ', 'Premium Bandai')
@@ -467,6 +509,37 @@
       }
       if (patt87.test(key)) {
         value = value.replace('受注販売', '预订销售')
+      }
+      //翻译筛选条件
+      if (patt116.test(key)) {
+        value = value.replace('リリース順', '发布顺序')
+      }
+      if (patt117.test(key)) {
+        value = value.replace('発売日の新しい順', '最新发布日期')
+      }
+      if (patt118.test(key)) {
+        value = value.replace('発売日の古い順', '最早发布日期')
+      }
+      if (patt119.test(key)) {
+        value = value.replace('価格の安い順', '最低价格排序')
+      }
+      if (patt120.test(key)) {
+        value = value.replace('価格の高い順', '最高价格排序')
+      }
+      if (patt121.test(key)) {
+        value = value.replace('一般店頭商品', '普通店铺商品')
+      }
+      if (patt122.test(key)) {
+        value = value.replace('魂ウェブ商店商品', '魂网商店商品')
+      }
+      if (patt123.test(key)) {
+        value = value.replace('その他限定商品', '其他限定商品')
+      }
+      if (patt124.test(key)) {
+        value = value.replace('魂ストア限定商品', '魂商店限定商品')
+      }
+      if (patt125.test(key)) {
+        value = value.replace('魂ストアイベント商品', '魂商店活动商品')
       }
     }
     return value;
