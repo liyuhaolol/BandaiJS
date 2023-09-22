@@ -16,7 +16,7 @@
 // @grant               GM_getResourceText
 // @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20230916
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
-// @icon                https://p-bandai.jp/favicon.ico
+// @icon                https://tamashiiweb.com/favicon.ico
 // @license MIT
 // ==/UserScript==
 
@@ -156,6 +156,17 @@
     var patt126 = /シリーズの/;
     var patt127 = /予約受付終了/;
     var patt128 = /ネオ/;
+    var patt129 = /機/;
+    var patt130 = /専用武装セット/;
+    var patt131 = /ガンダムエクシア/;
+    var patt132 = /ガンダムデヴァイズエクシア/;
+    var patt133 = /エクシア/;
+    var patt134 = /リペア/;
+    var patt135 = /トランザム/;
+    var patt136 = /トランザムライザー/;
+    var patt137 = /トランザムVer./;
+    var patt138 = /ダブルオーガンダム/;
+    var patt139 = /ダブルオーライザー/;
 
 
 
@@ -344,9 +355,7 @@
                 value = value.replace('ネオ', '新')
             }
             //主要用来翻译一些杂项2
-            if (patt57.test(key)) {
-                value = value.replace('ガンダムシリーズ', '高达系列')
-            } else if (patt104.test(key)) {
+            if (patt104.test(key)) {
                 value = value.replace('税抜', '不含税')
             } else if (patt110.test(key)) {
                 value = value.replace('での検索結果', '的搜索结果')
@@ -521,6 +530,30 @@
             } else if (patt99.test(key)) {
                 value = value.replace('天空の宣言', '天空的宣言')
             }
+            //翻译一些00名称主词条
+            if (patt131.test(key)) {
+                value = value.replace('ガンダムエクシア', '能天使高达')
+            } else if (patt132.test(key)) {
+                value = value.replace('ガンダムデヴァイズエクシア', '能天使高达概念型')
+            } else if (patt138.test(key)) {
+                value = value.replace('ダブルオーガンダム', '00高达')
+            } else if (patt139.test(key)) {
+                value = value.replace('ダブルオーライザー', '00 RAISER')
+            }
+            //翻译一些00名称附词条
+            if (patt133.test(key)) {
+                value = value.replace('エクシア', '能天使')
+            } else if (patt136.test(key)) {
+                value = value.replace('トランザムライザー', 'TRANS-AM RAISER')
+            }
+            //翻译一些00名称三级词条
+            if (patt134.test(key)) {
+                value = value.replace('リペア', '修复型')
+            } else if (patt137.test(key)) {
+                value = value.replace('トランザムVer.', 'TRANS-AM Ver.')
+            } else if (patt135.test(key)) {
+                value = value.replace('トランザム', 'TRANS-AM')
+            }
             //翻译销售类型
             if (patt25.test(key)) {
                 value = value.replace('抽選販売', '抽选销售')
@@ -548,6 +581,16 @@
             }
             if (patt127.test(key)) {
                 value = value.replace('予約受付終了', '预约结束')
+            }
+            //这里进行EVA的翻译，其实就是翻译个“機”
+            if (patt129.test(key)) {
+                value = value.replace('機', '机')
+            }
+            if (patt129.test(key)) {
+                value = value.replace('機', '机')
+            }
+            if (patt130.test(key)) {
+                value = value.replace('専用武装セット', '专用武器套装')
             }
         }
         return value;
