@@ -167,6 +167,16 @@
     var patt137 = /トランザムVer./;
     var patt138 = /ダブルオーガンダム/;
     var patt139 = /ダブルオーライザー/;
+    var patt140 = /セブンソード/;
+    var patt141 = /ガンダムアヴァランチエクシア/;
+    var patt142 = /ウェポンプラスパック/;
+    var patt143 = /オプションパーツセット/;
+    var patt144 = /デザイナーズブルー/;
+    var patt145 = /ダブルオークアンタ/;
+    var patt146 = /GNソード/;
+    var patt147 = /ブラスター/;
+    var patt148 = /ガンダムデュナメス＆デヴァイズデュナメス/;
+    var patt149 = /ガンダムデュナメス/;
 
 
 
@@ -531,7 +541,9 @@
                 value = value.replace('天空の宣言', '天空的宣言')
             }
             //翻译一些00名称主词条
-            if (patt131.test(key)) {
+            if (patt141.test(key)) {
+                value = value.replace('ガンダムアヴァランチエクシア', '雪崩能天使高达')
+            } else if (patt131.test(key)) {
                 value = value.replace('ガンダムエクシア', '能天使高达')
             } else if (patt132.test(key)) {
                 value = value.replace('ガンダムデヴァイズエクシア', '能天使高达概念型')
@@ -539,12 +551,31 @@
                 value = value.replace('ダブルオーガンダム', '00高达')
             } else if (patt139.test(key)) {
                 value = value.replace('ダブルオーライザー', '00 RAISER')
+            } else if (patt145.test(key)) {
+                value = value.replace('ダブルオークアンタ', '00Q高达')
+            } else if (patt146.test(key)) {
+                value = value.replace('GNソード', 'GN剑')
+            } else if (patt148.test(key)) {
+                value = value.replace('ガンダムデュナメス＆デヴァイズデュナメス', '力天使高达概念型')
+            } else if (patt149.test(key)) {
+                value = value.replace('ガンダムデュナメス', '力天使高达')
             }
             //翻译一些00名称附词条
             if (patt133.test(key)) {
                 value = value.replace('エクシア', '能天使')
-            } else if (patt136.test(key)) {
+            }
+            if (patt136.test(key)) {
                 value = value.replace('トランザムライザー', 'TRANS-AM RAISER')
+            } else if (patt140.test(key)) {
+                value = value.replace('セブンソード', '七剑型')
+            } else if (patt142.test(key)) {
+                value = value.replace('ウェポンプラスパック', '武器套装')
+            } else if (patt143.test(key)) {
+                value = value.replace('オプションパーツセット', '武器配件')
+            } else if (patt144.test(key)) {
+                value = value.replace('デザイナーズブルー', '海老川蓝色')
+            } else if (patt147.test(key)) {
+                value = value.replace('ブラスター', '爆裂步枪')
             }
             //翻译一些00名称三级词条
             if (patt134.test(key)) {
