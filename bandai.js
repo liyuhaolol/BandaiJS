@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.2
+// @version             3.3
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -14,7 +14,7 @@
 // @match               *://tamashiiweb.com/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20230916
+// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20230923
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @icon                https://tamashiiweb.com/favicon.ico
 // @license MIT
@@ -177,6 +177,16 @@
     var patt147 = /ブラスター/;
     var patt148 = /ガンダムデュナメス＆デヴァイズデュナメス/;
     var patt149 = /ガンダムデュナメス/;
+    var patt150 = /ガンダムアストレア/;
+    var patt151 = /アヴァラングダッシュ/;
+    var patt152 = /OPセット/;
+    var patt153 = /GN HEAVY WEAPON SET/;
+    var patt154 = /プロトGNハイメガランチャー/;
+    var patt155 = /高机動試験装備/;
+    var patt156 = /ガンダムアストレアTYPE-Xフィンスターニス/;
+    var patt157 = /GNアームズ TYPE-E/;
+    var patt158 = /プロトザンユニット/;
+    
 
 
 
@@ -559,6 +569,14 @@
                 value = value.replace('ガンダムデュナメス＆デヴァイズデュナメス', '力天使高达概念型')
             } else if (patt149.test(key)) {
                 value = value.replace('ガンダムデュナメス', '力天使高达')
+            } else if (patt156.test(key)) {
+                value = value.replace('ガンダムアストレアTYPE-Xフィンスターニス', '黑正义女神高达TYPE-X')
+            } else if (patt150.test(key)) {
+                value = value.replace('ガンダムアストレア', '正义女神高达')
+            } else if (patt157.test(key)) {
+                value = value.replace('GNアームズ TYPE-E', 'GN武装战机 TYPE-E')
+            } else if (patt158.test(key)) {
+                value = value.replace('プロトザンユニット', '原型XN组件')
             }
             //翻译一些00名称附词条
             if (patt133.test(key)) {
@@ -576,6 +594,14 @@
                 value = value.replace('デザイナーズブルー', '海老川蓝色')
             } else if (patt147.test(key)) {
                 value = value.replace('ブラスター', '爆裂步枪')
+            } else if (patt151.test(key)) {
+                value = value.replace('アヴァラングダッシュ', '雪崩')
+            } else if (patt153.test(key)) {
+                value = value.replace('GN HEAVY WEAPON SET', 'GN重武装型')
+            } else if (patt154.test(key)) {
+                value = value.replace('プロトGNハイメガランチャー', '原型GN粒子米加发射器')
+            } else if (patt155.test(key)) {
+                value = value.replace('高机動試験装備', '高机动试验装备')
             }
             //翻译一些00名称三级词条
             if (patt134.test(key)) {
@@ -584,6 +610,8 @@
                 value = value.replace('トランザムVer.', 'TRANS-AM Ver.')
             } else if (patt135.test(key)) {
                 value = value.replace('トランザム', 'TRANS-AM')
+            } else if (patt152.test(key)) {
+                value = value.replace('OPセット', 'OPTION套装')
             }
             //翻译销售类型
             if (patt25.test(key)) {
