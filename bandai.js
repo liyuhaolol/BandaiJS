@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.3
+// @version             3.4
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -182,7 +182,7 @@
     var patt152 = /OPセット/;
     var patt153 = /GN HEAVY WEAPON SET/;
     var patt154 = /プロトGNハイメガランチャー/;
-    var patt155 = /高机動試験装備/;
+    var patt155 = /高機動試験装備/;
     var patt156 = /ガンダムアストレアTYPE-Xフィンスターニス/;
     var patt157 = /GNアームズ TYPE-E/;
     var patt158 = /プロトザンユニット/;
@@ -601,7 +601,7 @@
             } else if (patt154.test(key)) {
                 value = value.replace('プロトGNハイメガランチャー', '原型GN粒子米加发射器')
             } else if (patt155.test(key)) {
-                value = value.replace('高机動試験装備', '高机动试验装备')
+                value = value.replace('高機動試験装備', '高机动试验装备')
             }
             //翻译一些00名称三级词条
             if (patt134.test(key)) {
