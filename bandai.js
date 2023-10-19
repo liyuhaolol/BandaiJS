@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.4
+// @version             3.5
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -186,6 +186,7 @@
     var patt156 = /ガンダムアストレアTYPE-Xフィンスターニス/;
     var patt157 = /GNアームズ TYPE-E/;
     var patt158 = /プロトザンユニット/;
+    var patt159 = /オオトリ/;
     
 
 
@@ -493,6 +494,8 @@
                 value = value.replace('パワードレッド', '强力型')
             } else if (patt93.test(key)) {
                 value = value.replace('タクティカルアームズ', '战术复合兵装')
+            } else if (patt159.test(key)) {
+                value = value.replace('オオトリ', '凤型强袭装备')
             }
             //翻译一些SEED名称附词条
             if (patt37.test(key)) {
