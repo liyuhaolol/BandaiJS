@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.5
+// @version             3.6
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -187,6 +187,7 @@
     var patt157 = /GNアームズ TYPE-E/;
     var patt158 = /プロトザンユニット/;
     var patt159 = /オオトリ/;
+    var patt160 = /GNアームズ TYPE-D/;
     
 
 
@@ -580,6 +581,8 @@
                 value = value.replace('GNアームズ TYPE-E', 'GN武装战机 TYPE-E')
             } else if (patt158.test(key)) {
                 value = value.replace('プロトザンユニット', '原型XN组件')
+            } else if (patt160.test(key)) {
+                value = value.replace('GNアームズ TYPE-D', 'GN武装战机 TYPE-D')
             }
             //翻译一些00名称附词条
             if (patt133.test(key)) {
