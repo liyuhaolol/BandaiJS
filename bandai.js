@@ -1,20 +1,19 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.6
+// @version             3.7
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
 // @description:zh-CN   日魂汉化插件
 // @author              菜狗子
-// @updateURL           https://fastly.jsdelivr.net/gh/liyuhaolol/BandaiJS/bandai.js
-// @downloadURL         https://fastly.jsdelivr.net/gh/liyuhaolol/BandaiJS/bandai.js
 // @match               *://p-bandai.jp/*
 // @match               *://search.p-bandai.jp/*
 // @match               *://tamashiiweb.com/*
+// @match               *://support.bandaispirits.co.jp/*
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
-// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20230923
+// @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20231218
 // @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
 // @icon                https://tamashiiweb.com/favicon.ico
 // @license MIT
@@ -188,7 +187,9 @@
     var patt158 = /プロトザンユニット/;
     var patt159 = /オオトリ/;
     var patt160 = /GNアームズ TYPE-D/;
-    
+    var patt161 = /コード/;
+    var patt162 = /取扱説明書/;
+
 
 
 
@@ -271,6 +272,7 @@
         if (locales.dict[key]) {
             value = locales.dict[key];
         } else {
+    
             //翻译筛选条件
             if (patt116.test(key)) {
                 value = value.replace('リリース順', '发布顺序')
@@ -656,6 +658,14 @@
             }
             if (patt130.test(key)) {
                 value = value.replace('専用武装セット', '专用武器套装')
+            }
+
+            //这里写的是说明书网站的翻译
+            if (patt161.test(key)) {
+                value = value.replace('コード', '代码')
+            }
+            if (patt162.test(key)) {
+                value = value.replace('取扱説明書', '使用说明书')
             }
         }
         return value;
