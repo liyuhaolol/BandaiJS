@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.7
+// @version             3.8
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -189,6 +189,7 @@
     var patt160 = /GNアームズ TYPE-D/;
     var patt161 = /コード/;
     var patt162 = /取扱説明書/;
+    var patt163 = /マイティーストライクフリーダムガンダム/;
 
 
 
@@ -272,7 +273,7 @@
         if (locales.dict[key]) {
             value = locales.dict[key];
         } else {
-    
+
             //翻译筛选条件
             if (patt116.test(key)) {
                 value = value.replace('リリース順', '发布顺序')
@@ -447,7 +448,9 @@
                 value = value.replace('ドラゴンボール', '龙珠')
             }
             //翻译一些SEED名称主词条
-            if (patt89.test(key)) {
+            if (patt163.test(key)) {
+                value = value.replace('マイティーストライクフリーダムガンダム', '非凡强袭自由高达')
+            } if (patt89.test(key)) {
                 value = value.replace('エールストライクガンダム', '翔翼型强袭高达')
             } else if (patt20.test(key)) {
                 value = value.replace('ストライクガンダム', '强袭高达')
