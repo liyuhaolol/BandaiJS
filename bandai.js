@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.8
+// @version             3.9
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -190,6 +190,7 @@
     var patt161 = /コード/;
     var patt162 = /取扱説明書/;
     var patt163 = /マイティーストライクフリーダムガンダム/;
+    var patt164 = /会員/;
 
 
 
@@ -378,6 +379,8 @@
                 value = value.replace('次へ', '下一页')
             } else if (patt128.test(key)) {
                 value = value.replace('ネオ', '新')
+            } else if (patt164.test(key)) {
+                value = value.replace('会員', '会员')
             }
             //主要用来翻译一些杂项2
             if (patt104.test(key)) {
