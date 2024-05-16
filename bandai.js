@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             3.9
+// @version             4.0
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -191,6 +191,7 @@
     var patt162 = /取扱説明書/;
     var patt163 = /マイティーストライクフリーダムガンダム/;
     var patt164 = /会員/;
+    var patt165 = /ガンダムデュナメスサーガ/;
 
 
 
@@ -563,7 +564,9 @@
                 value = value.replace('天空の宣言', '天空的宣言')
             }
             //翻译一些00名称主词条
-            if (patt141.test(key)) {
+            if (patt165.test(key)) {
+                value = value.replace('ガンダムデュナメスサーガ', '力天使高达传奇')
+            } else if (patt141.test(key)) {
                 value = value.replace('ガンダムアヴァランチエクシア', '雪崩能天使高达')
             } else if (patt131.test(key)) {
                 value = value.replace('ガンダムエクシア', '能天使高达')
