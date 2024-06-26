@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             4.0
+// @version             4.1
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -192,6 +192,9 @@
     var patt163 = /マイティーストライクフリーダムガンダム/;
     var patt164 = /会員/;
     var patt165 = /ガンダムデュナメスサーガ/;
+    var patt166 = /弐式/;
+    var patt167 = /プラウドディフェンダー/;
+    var patt168 = /エフェクトパーツセット/;
 
 
 
@@ -506,6 +509,8 @@
                 value = value.replace('タクティカルアームズ', '战术复合兵装')
             } else if (patt159.test(key)) {
                 value = value.replace('オオトリ', '凤型强袭装备')
+            } else if (patt167.test(key)) {
+                value = value.replace('プラウドディフェンダー', '荣耀捍卫者')
             }
             //翻译一些SEED名称附词条
             if (patt37.test(key)) {
@@ -532,6 +537,8 @@
                 value = value.replace('ハイネ機', '海涅机型')
             } else if (patt101.test(key)) {
                 value = value.replace('プリズムコート', '棱镜涂层')
+            } else if (patt166.test(key)) {
+                value = value.replace('弐式', '二式')
             }
             //翻译一些SEED名称三级词条
             if (patt43.test(key)) {
@@ -552,6 +559,8 @@
                 value = value.replace('フル・ウェポン装備', '全装备版')
             } else if (patt81.test(key)) {
                 value = value.replace('光の翼', '光之翼')
+            } else if (patt168.test(key)) {
+                value = value.replace('エフェクトパーツセット', '特效件套装')
             }
             //翻译一些SEED名称四级词条
             if (patt80.test(key)) {
