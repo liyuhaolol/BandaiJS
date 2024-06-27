@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             4.1
+// @version             4.2
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -195,6 +195,17 @@
     var patt166 = /弐式/;
     var patt167 = /プラウドディフェンダー/;
     var patt168 = /エフェクトパーツセット/;
+    var patt169 = /SpecII/;
+    var patt170 = /インパルスガンダム/;
+    var patt171 = /フォース/;
+    var patt172 = /専用光の翼/;
+    var patt173 = /ゼウスシルエット/;
+    var patt174 = /アカツキ/;
+    var patt175 = /アカツキガンダム/;
+    var patt176 = /シラヌイ装備/;
+    var patt177 = /オオワシ装備/;
+    var patt178 = /ライジングフリーダムガンダム/;
+    var patt179 = /イモータルジャスティスガンダム/;
 
 
 
@@ -457,7 +468,11 @@
             //翻译一些SEED名称主词条
             if (patt163.test(key)) {
                 value = value.replace('マイティーストライクフリーダムガンダム', '非凡强袭自由高达')
-            } if (patt89.test(key)) {
+            } else if (patt178.test(key)) {
+                value = value.replace('ライジングフリーダムガンダム', '飞升自由高达')
+            } else if (patt179.test(key)) {
+                value = value.replace('イモータルジャスティスガンダム', '不朽正义高达')
+            } else if (patt89.test(key)) {
                 value = value.replace('エールストライクガンダム', '翔翼型强袭高达')
             } else if (patt20.test(key)) {
                 value = value.replace('ストライクガンダム', '强袭高达')
@@ -511,6 +526,12 @@
                 value = value.replace('オオトリ', '凤型强袭装备')
             } else if (patt167.test(key)) {
                 value = value.replace('プラウドディフェンダー', '荣耀捍卫者')
+            } else if (patt170.test(key)) {
+                value = value.replace('インパルスガンダム', '脉冲高达')
+            } else if (patt175.test(key)) {
+                value = value.replace('アカツキガンダム', '拂晓高达')
+            } else if (patt174.test(key)) {
+                value = value.replace('アカツキ', '拂晓')
             }
             //翻译一些SEED名称附词条
             if (patt37.test(key)) {
@@ -539,6 +560,14 @@
                 value = value.replace('プリズムコート', '棱镜涂层')
             } else if (patt166.test(key)) {
                 value = value.replace('弐式', '二式')
+            } else if (patt171.test(key)) {
+                value = value.replace('フォース', '强攻型')
+            } else if (patt173.test(key)) {
+                value = value.replace('ゼウスシルエット', '宙斯魅影')
+            } else if (patt176.test(key)) {
+                value = value.replace('シラヌイ装備', '不知火装备')
+            } else if (patt177.test(key)) {
+                value = value.replace('オオワシ装備', '大鹫装备')
             }
             //翻译一些SEED名称三级词条
             if (patt43.test(key)) {
@@ -557,6 +586,8 @@
                 value = value.replace('タイガーピアス', '虎彻')
             } else if (patt96.test(key)) {
                 value = value.replace('フル・ウェポン装備', '全装备版')
+            } else if (patt172.test(key)) {
+                value = value.replace('専用光の翼', '专用光之翼')
             } else if (patt81.test(key)) {
                 value = value.replace('光の翼', '光之翼')
             } else if (patt168.test(key)) {
@@ -571,6 +602,8 @@
                 value = value.replace('パワー', 'POWER')
             } else if (patt99.test(key)) {
                 value = value.replace('天空の宣言', '天空的宣言')
+            } else if (patt169.test(key)) {
+                value = value.replace('SpecII', '规格II')
             }
             //翻译一些00名称主词条
             if (patt165.test(key)) {
