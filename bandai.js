@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name                Bandai Internationalization
 // @name:zh-CN          日魂汉化插件
-// @version             4.2
+// @version             4.3
 // @namespace           https://github.com/liyuhaolol/BandaiJS
 // @description         Translate p-bandai.jp
 // @description:zh      日魂汉化插件
@@ -206,6 +206,7 @@
     var patt177 = /オオワシ装備/;
     var patt178 = /ライジングフリーダムガンダム/;
     var patt179 = /イモータルジャスティスガンダム/;
+    var patt180 = /フルセイバー/;
 
 
 
@@ -661,6 +662,8 @@
                 value = value.replace('プロトGNハイメガランチャー', '原型GN粒子米加发射器')
             } else if (patt155.test(key)) {
                 value = value.replace('高機動試験装備', '高机动试验装备')
+            } else if (patt180.test(key)) {
+                value = value.replace('フルセイバー', '全刃式')
             }
             //翻译一些00名称三级词条
             if (patt134.test(key)) {
