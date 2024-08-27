@@ -14,7 +14,7 @@
 // @grant               GM_xmlhttpRequest
 // @grant               GM_getResourceText
 // @resource            zh-CN https://cdn.jsdelivr.net/gh/liyuhaolol/BandaiTranslate/bandai.json?v=20231218
-// @require             https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js
+// @require             https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @icon                https://tamashiiweb.com/favicon.ico
 // @license MIT
 // ==/UserScript==
